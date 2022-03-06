@@ -5,4 +5,5 @@ The library which will be used by most of my scripts. This library has the thing
 * Check if num is prime
 * Prime factorisation
 * Getting divisors of num
+* Fibbonaci sequence
 * And more...

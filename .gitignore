@@ -3,3 +3,5 @@ dist/*
 makefile
 
 .vscode
+
+__pycache__/

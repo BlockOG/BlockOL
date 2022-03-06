@@ -36,6 +36,14 @@ def fibi(endi):
         fibs.append(fibs[-2] + fibs[-1])
     return fibs
 
+def fib():
+    a, b = 1, 1
+    while True:
+        yield a
+        c = a + b
+        a = b
+        b = c
+
 def zeros_after(n):
     a = 0
     
