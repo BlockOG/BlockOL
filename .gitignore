@@ -4,4 +4,4 @@ makefile
 
 .vscode
 
-src/BlockOL/__pycache__/
+/__pycache__/
