@@ -97,8 +97,9 @@ def zeros_after(n: int) -> int:
         int: The number of trailing zeros in n
     """
     zeros = 0
-    for i in range(1, n + 1):
-        zeros += n // (5 ** i)
+    for i in str(n)[::-1]:
+        if i != "0": break
+        zeros += 1
     
     return zeros
 
