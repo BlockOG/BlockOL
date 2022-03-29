@@ -48,6 +48,25 @@ def next_prime(n: int) -> int:
         n += 1
     return n
 
+def nth_prime(n: int) -> int:
+    """Returns the nth prime number
+    
+    Args:
+        n (int): Which prime number to find
+    
+    Returns:
+        int: The nth prime number
+    """
+    primes = [2]
+    i = 3
+    
+    while len(primes) < n:
+        if is_prime(i):
+            primes.append(i)
+        i += 2
+    
+    return primes[-1]
+
 def fibn(endn: int) -> list:
     """Given an end number, returns the fibonacci numbers up to that number
     

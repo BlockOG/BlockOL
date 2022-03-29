@@ -30,6 +30,18 @@ class TestEverything(unittest.TestCase):
         self.assertEqual(BlockOL.next_prime(500), 503)
         self.assertEqual(BlockOL.next_prime(1000), 1009)
     
+    def test_nth_prime(self):
+        self.assertTrue(BlockOL.nth_prime(1) == 2)
+        self.assertTrue(BlockOL.nth_prime(2) == 3)
+        self.assertTrue(BlockOL.nth_prime(3) == 5)
+        self.assertTrue(BlockOL.nth_prime(4) == 7)
+        self.assertTrue(BlockOL.nth_prime(5) == 11)
+        self.assertTrue(BlockOL.nth_prime(6) == 13)
+        self.assertTrue(BlockOL.nth_prime(7) == 17)
+        self.assertTrue(BlockOL.nth_prime(8) == 19)
+        self.assertTrue(BlockOL.nth_prime(9) == 23)
+        self.assertTrue(BlockOL.nth_prime(10) == 29)
+    
     def test_fibn(self):
         self.assertEqual(BlockOL.fibn(102334156), [0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,1597,2584,4181,6765,10946,17711,28657,46368,75025,121393,196418,317811,514229,832040,1346269,2178309,3524578,5702887,9227465,14930352,24157817,39088169,63245986,102334155])
     
