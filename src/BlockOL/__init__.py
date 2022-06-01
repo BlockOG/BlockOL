@@ -214,3 +214,43 @@ def prime_div(n):
         factors.append(n)
     
     return factors
+
+def bin_search_min(func):
+    i, j = -10, -10
+    while func(i):
+        i *= 10
+    i //= 10
+    j = i
+    while j != -1:
+        if func(i):
+            i += j
+        else:
+            i -= j
+            j //= 10
+    return i
+
+def bin_search(func, mi, ma):
+    i = (mi + ma) // 2
+    while True:
+        match (j := func(i)):
+            case -1:
+                mi = i - 1
+                i = (ma + i) // 2
+            case 0: return i
+            case 1:
+                ma = i + 1
+                i = (mi + i) // 2
+
+def bin_search_max(func):
+    i, j = 10, 10
+    while func(i):
+        i *= 10
+    i //= 10
+    j = i
+    while j != 0:
+        if func(i):
+            i += j
+        else:
+            i -= j
+            j //= 10
+    return i
