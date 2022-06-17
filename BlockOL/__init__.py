@@ -176,7 +176,7 @@ def diviz(n: int) -> list:
     return a + [n]
 
 
-def diviz_fl(n: int) -> list:
+def diviz_fl(n: int) -> list[int]:
     """Returns the first and last numbers that divide n
 
     Args:
@@ -344,3 +344,21 @@ def teef(
     finally:
         ret[3] = fin(gls)
     return tuple(ret), gls
+
+
+def loop(setup: Callable, cond: Callable, func: Callable) -> Dict:
+    """A for loop like in C, C++, Rust, etc. Every function gets a dictionary for talking between them.
+
+    Args:
+        setup (Callable): The function that gets called before the loop
+        cond (Callable): The condition function returns True or False
+        func (Callable): The function to call for each iteration
+
+    Returns:
+        Dict: The dictionary
+    """
+    gls = {}
+    setup(gls)
+    while cond(gls):
+        func(gls)
+    return gls
