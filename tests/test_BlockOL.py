@@ -243,6 +243,25 @@ class TestBlockOL(unittest.TestCase):
         self.assertEqual(BlockOL.prime_div(9), [3, 3])
         self.assertEqual(BlockOL.prime_div(10), [2, 5])
 
+    def test_bin_search_min(self):
+        self.assertEqual(BlockOL.bin_search_min(lambda a: a > -100), -99)
+
+    def test_bin_search(self):
+        self.assertEqual(
+            BlockOL.bin_search(
+                lambda a: -1 if a < 100 else 0 if a == 100 else 1, -1000, 1000
+            ),
+            100,
+        )
+        with self.assertRaises(ValueError) as cm:
+            BlockOL.bin_search(
+                lambda a: -1 if a < 101 else 0 if a == 101 else 1, -100, 100
+            )
+        self.assertEqual(cm.exception.args, ("Value not found in given range",))
+
+    def test_bin_search_max(self):
+        self.assertEqual(BlockOL.bin_search_max(lambda a: a < 100), 99)
+
     def test_teef(self):
         self.assertEqual(BlockOL.teef(lambda a: 1), ((1, None, None, None), {}))
         self.assertEqual(
@@ -266,17 +285,17 @@ class TestBlockOL(unittest.TestCase):
                 lambda a: a.__setitem__("a", 2),
                 lambda a: a["a"],
             ),
-            ((1, None, None, 2), {"a": 2})
+            ((1, None, None, 2), {"a": 2}),
         )
         self.assertEqual(
             BlockOL.teef(
-                lambda a: 1/0,
+                lambda a: 1 / 0,
                 ZeroDivisionError,
                 lambda a, e: a.__setitem__("a", 1),
                 lambda a: a.__setitem__("a", 2),
                 lambda a: a["a"],
             ),
-            ((None, None, None, 1), {"a": 1})
+            ((None, None, None, 1), {"a": 1}),
         )
 
 

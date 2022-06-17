@@ -238,6 +238,80 @@ def prime_div(n: int) -> list:
     return factors
 
 
+def bin_search_min(func: Callable) -> int:
+    """Finds the minimum value where the function returns True
+
+    Args:
+        func (Callable): The function to test
+
+    Returns:
+        int: The minimum value where the function returns True
+    """
+
+    i, j = -10, -10
+    while func(i):
+        i *= 10
+    i //= 10
+    j = i
+    while j != 0:
+        if func(i):
+            i += j
+        else:
+            i -= j
+            j = -(-j // 10)
+    return i
+
+
+def bin_search(func: Callable, mi: int, ma: int) -> int:
+    """Find the value where the function returns 0. The function should return -1 if the value is too low, 1 if the value is too high, and 0 if the value is correct.
+
+    Args:
+        func (Callable): The function to test
+        mi (int): The minimum value to test
+        ma (int): The maximum value to test
+
+    Returns:
+        int: The value where the function returns 0
+    """
+
+    pi = i = (mi + ma) // 2
+    while True:
+        if (j := func(i)) == -1:
+            mi = i - 1
+            pi, i = i, (ma + i) // 2
+            if pi == i:
+                raise ValueError("Value not found in given range")
+        elif j == 0:
+            return i
+        elif j == 1:
+            ma = i + 1
+            i = (mi + i) // 2
+
+
+def bin_search_max(func):
+    """Finds the maximum value where the function returns True
+
+    Args:
+        func (Callable): The function to test
+
+    Returns:
+        int: The maximum value where the function returns True
+    """
+
+    i, j = 10, 10
+    while func(i):
+        i *= 10
+    i //= 10
+    j = i
+    while j != 0:
+        if func(i):
+            i += j
+        else:
+            i -= j
+            j //= 10
+    return i
+
+
 def teef(
     tr: Callable,
     exces: Union[Tuple[BaseException], BaseException] = (),
